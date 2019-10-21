@@ -1,0 +1,37 @@
+{% extends '/home/index.html' %}
+{% block section %}
+    <form method="post">
+    {{ teacheradd_form.name.label}}{{teacheradd_form.name }}<br>
+    {{ teacheradd_form.idnum.label}}{{teacheradd_form.idnum }}
+    {% for msg in get_flashed_messages(category_filter=['idnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ teacheradd_form.phnum.label}}{{teacheradd_form.phnum }}
+    {% for msg in get_flashed_messages(category_filter=['phnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ teacheradd_form.email.label}}{{teacheradd_form.email }}
+    {% for msg in get_flashed_messages(category_filter=['email']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ teacheradd_form.course_id.label}}{{teacheradd_form.course_id }}
+    {% for msg in get_flashed_messages(category_filter=['course_id']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ teacheradd_form.msg.label}}{{teacheradd_form.msg }}
+    {% for msg in get_flashed_messages(category_filter=['msg']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {% for msg in get_flashed_messages(category_filter=['other']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{teacheradd_form.csrf_token }}
+    {{ teacheradd_form.submit }}<br>
+
+    </form>
+{% endblock %}

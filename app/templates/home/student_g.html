@@ -1,0 +1,130 @@
+{% extends '/home/index.html' %}
+{% import "home/mypage.html" as macros %}
+{% block section %}
+    <style type="text/css">
+        .class_g_botten_d {
+            height: 50px;
+            width: 60px;
+            background: none;
+        {#float: right;#} top: 23%;
+            left: 0px;
+            border-radius: 5px;
+
+        }
+
+        .class_g_botten {
+            height: 30px;
+            width: 50px;
+            background: seagreen;
+            padding: 0px;
+            margin: auto;
+            position: absolute;
+            top: 23%;
+            left: 0px;
+            border-radius: 5px;
+            float: right;
+            border: none;
+            outline: none;
+        }
+
+        .class_g_botten_a {
+            text-decoration: none;
+            float: contour;
+
+        }
+    </style>
+
+    <div style="height: 20%;width: 100%;background: white">
+        <form method="POST">
+            <label style="float: left">学员列表：{{ form.name_idnum }}</label>
+            <label style="float: left">学号：{{ form.stnum }}</label>
+            <label style="float: left">邮箱：{{ form.email }}</label>
+            <label style="float: left">电话号码：{{ form.phnum }}</label>
+            <label style="float: left">创建时间始：{{ form.addtime_s }}</label>
+            <label style="float: left">创建时间止：{{ form.addtime_e }}</label>
+            {{ form.submit_query }}
+            {{ form.csrf_token }}
+        </form>
+    </div>
+
+    <div style="height: 10%;width: 100%;background: lightblue">
+        <a href="{{ url_for("home.student_add") }}">
+            <button class="class_g_botten" style="left: 10px">新增</button>
+        </a>
+        <a href="{{ url_for("home.student_add") }}">
+            <button class="class_g_botten" style="left: 70px">编辑</button>
+        </a>
+        <a href="{{ url_for("home.student_add") }}">
+            <button class="class_g_botten" style="left: 130px">删除</button>
+        </a>
+        {#        <a href="{{ url_for("home.student_add") }}">#}
+
+    </div>
+    <div style="height: 65%;width: 100%;background: white">
+        <table border="1">
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>身份证号码</th>
+                <th>电话号码</th>
+                <th>学号</th>
+                <th>邮箱</th>
+                <th>年级</th>
+                <th>班级</th>
+                <th>班主任</th>
+                <th>1年级上期</th>
+                <th>1年级下期</th>
+                <th>2年级上期</th>
+                <th>2年级下期</th>
+                <th>3年级上期</th>
+                <th>3年级下期</th>
+                <th>添加时间</th>
+                <th>操作</th>
+            </tr>
+
+            {% for e in st_list %}
+                <tr>
+                    <td>{{ e.id }}</td>
+                    <td>{{ e.name }}</td>
+                    <td>{{ e.idnum }}</td>
+                    <td>{{ e.phnum }}</td>
+                    <td>{{ e.stnum }}</td>
+                    <td>{{ e.email }}</td>
+                    <th>{{ e.grade }}</th>
+                    <th>{{ e.relate_class_student.name }}</th>
+                    <th>{{ e.relate_students_teacher.name }}</th>
+                    <td>{{ e.score0_id }}</td>
+                    <td>{{ e.score1_id }}</td>
+                    <td>{{ e.score2_id }}</td>
+                    <td>{{ e.score3_id }}</td>
+                    <td>{{ e.score4_id }}</td>
+                    <td>{{ e.score5_id }}</td>
+                    <td>{{ e.add_time }}</td>
+                    <td>
+                        <a href="{{ url_for("home.student_edit",id=e.id) }}">
+                            <button>编辑</button>
+                        </a>
+                        <a href="{{ url_for("home.student_del",id=e.id) }}">
+                            <button>删除</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        <div>
+            {% for msg in get_flashed_messages() %}
+                {{ msg }}
+            {% endfor %}<br>
+        </div>
+        <div>
+            {% if pagination %}
+                <div>
+                    {{ macros.mypage(pagination, '.student_g') }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div style="height: 5%;width: 100%;background: white">
+
+    </div>
+{% endblock %}

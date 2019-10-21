@@ -1,0 +1,63 @@
+{% extends '/home/index.html' %}
+{% block section %}
+    <form method="post">
+    {{ studentadd_form.name.label}}{{studentadd_form.name }}
+{#        {% for err in studentadd_form.name.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}<br>
+
+    {{ studentadd_form.idnum.label}}{{studentadd_form.idnum }}
+{#        {% for err in studentadd_form.idnum.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['idnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ studentadd_form.stnum.label}}{{studentadd_form.stnum }}
+{#        {% for err in studentadd_form.stnum.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['stnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ studentadd_form.phnum.label}}{{studentadd_form.phnum }}
+{#        {% for err in studentadd_form.phnum.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['phnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ studentadd_form.email.label}}{{studentadd_form.email }}
+{#        {% for err in studentadd_form.email.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['email']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ studentadd_form.grade.label}}{{studentadd_form.grade }}
+    {% for msg in get_flashed_messages(category_filter=['grade']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ studentadd_form.classes.label}}{{studentadd_form.classes }}
+    {% for msg in get_flashed_messages(category_filter=['classes']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ studentadd_form.teacher.label}}{{studentadd_form.teacher }}
+    {% for msg in get_flashed_messages(category_filter=['teacher']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {% for msg in get_flashed_messages(category_filter=['other']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{studentadd_form.csrf_token }}
+    {{ studentadd_form.submit }}<br>
+
+    </form>
+{% endblock %}

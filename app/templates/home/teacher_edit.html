@@ -1,0 +1,45 @@
+{% extends '/home/index.html' %}
+{% block section %}
+    <form method="post">
+        <script  type = "text/javascript" >
+             onload = function() {
+            document.getElementById("sel_class_id").selectedIndex = {{ teacher.class_id }};
+            document.getElementById("sel_course_id").selectedIndex = {{ teacher.course_id }};
+            }
+        </script >
+        {{ teacher_edit_form.name.label }}{{ teacher_edit_form.name(value=teacher.name) }}<br>
+
+        {{ teacher_edit_form.idnum.label }}{{ teacher_edit_form.idnum(value=teacher.idnum) }}
+        {% for msg in get_flashed_messages(category_filter=['idnum']) %}
+            {{ msg }}
+        {% endfor %}<br>
+
+        {{ teacher_edit_form.phnum.label }}{{ teacher_edit_form.phnum(value=teacher.phnum) }}
+        {% for msg in get_flashed_messages(category_filter=['phnum']) %}
+            {{ msg }}
+        {% endfor %}<br>
+
+        {{ teacher_edit_form.email.label }}{{ teacher_edit_form.email(value=teacher.email) }}
+        {% for msg in get_flashed_messages(category_filter=['email']) %}
+            {{ msg }}
+        {% endfor %}<br>
+
+        {{ teacher_edit_form.course_id.label }}{{ teacher_edit_form.course_id}}
+        {% for msg in get_flashed_messages(category_filter=['course_id']) %}
+            {{ msg }}
+        {% endfor %}<br>
+
+        {{ teacher_edit_form.msg.label }}{{ teacher_edit_form.msg(value=teacher.msg) }}
+        {% for msg in get_flashed_messages(category_filter=['msg']) %}
+            {{ msg }}
+        {% endfor %}<br>
+
+        {% for msg in get_flashed_messages(category_filter=['other']) %}
+            {{ msg }}
+        {% endfor %}<br>
+
+        {{ teacher_edit_form.csrf_token }}
+        {{ teacher_edit_form.submit }}<br>
+
+    </form>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends '/home/index.html' %}
+{% block section %}
+    <form method="post">
+    {{ class_add_form.name.label}}{{class_add_form.name }}<br>
+    {{ class_add_form.grade.label}}{{class_add_form.grade }}
+    {% for msg in get_flashed_messages(category_filter=['grade']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ class_add_form.place.label}}{{class_add_form.place }}
+    {% for msg in get_flashed_messages(category_filter=['place']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ class_add_form.teacher_id.label}}{{class_add_form.teacher_id }}
+    {% for msg in get_flashed_messages(category_filter=['teacher_id']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {{ class_add_form.msg.label}}{{class_add_form.msg }}
+    {% for msg in get_flashed_messages(category_filter=['msg']) %}
+        {{ msg }}
+    {% endfor %}<br>
+
+    {% for msg in get_flashed_messages(category_filter=['other']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{class_add_form.csrf_token }}
+    {{ class_add_form.submit }}<br>
+
+    </form>
+{% endblock %}

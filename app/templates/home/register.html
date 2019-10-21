@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<style type="text/css">
+    .mydiv{
+   width:500px;
+   height:400px;
+   background: gainsboro;
+   position:absolute;
+   left:50%;
+   top:50%;
+   margin:-100px 0 0 -150px
+}
+</style>
+<div class="mydiv">
+<form method="post">
+    {{ form.username.label}}{{form.username }}{# 取username的名、输入框 #}
+        {% for err in form.username.errors %}
+            <span style="color: #ff4f1f">{{ err }}</span>
+        {% endfor %}<br>
+    {{ form.email.label}}{{form.email }}
+        {% for err in form.email.errors %}
+            <span style="color: #ff4f1f">{{ err }}</span>
+        {% endfor %}<br>
+    {{ form.password.label}}{{form.password }}<br>
+    {{ form.password2.label}}{{form.password2 }}
+        {% for err in form.password2.errors %}
+            <span style="color: #ff4f1f">{{ err }}</span>
+        {% endfor %}<br>
+    {% for msg in get_flashed_messages() %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{form.csrf_token }}
+    {{ form.submit }}<br>
+    </form></div>
+</body>
+</html>

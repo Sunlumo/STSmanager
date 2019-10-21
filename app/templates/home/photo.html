@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片</title>
+</head>
+<body>
+<form method="POST">点击上传:<br>
+    {{ form.photo }}<br><br>
+    {{ form.submit }}
+    {{form.csrf_token }}
+
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% extends '/home/index.html' %}
+{% block section %}
+    <form method="post">
+    {{ student_edit_form.name.label}}{{student_edit_form.name(value=student.name) }}
+{#        {% for err in studentadd_form.name.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}<br>
+    {{ student_edit_form.idnum.label}}{{student_edit_form.idnum(value=student.idnum) }}
+{#        {% for err in studentadd_form.idnum.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['idnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{ student_edit_form.stnum.label}}{{student_edit_form.stnum(value=student.stnum) }}
+{#        {% for err in studentadd_form.stnum.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['stnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{ student_edit_form.phnum.label}}{{student_edit_form.phnum(value=student.phnum)}}
+{#        {% for err in studentadd_form.phnum.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['phnum']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{ student_edit_form.email.label}}{{student_edit_form.email(value=student.email) }}
+{#        {% for err in studentadd_form.email.errors %}#}
+{#            <span style="color: #ff4f1f">{{ err }}</span>#}
+{#        {% endfor %}<br>#}
+    {% for msg in get_flashed_messages(category_filter=['email']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {% for msg in get_flashed_messages(category_filter=['other']) %}
+        {{ msg }}
+    {% endfor %}<br>
+    {{student_edit_form.csrf_token }}
+    {{ student_edit_form.submit }}<br>
+
+    </form>
+{% endblock %}

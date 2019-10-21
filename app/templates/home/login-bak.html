@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登录网页</title>
+		<link rel="stylesheet" href="css/style.css" />
+        <style type="text/css">
+              .img_isi{
+	              background-image: url(./isign-bg.jpg)
+              }
+            .body{
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                background: #2ECC71;
+
+            }
+            .box{
+                width: 300px;
+                padding: 40px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                background: #000000;
+                text-align: center;
+            }
+            .box h1{
+                color: white;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+            .box input[type="text"],.box input[type="password"]{
+                border: 0;
+                background: none;
+                display: block;
+                margin: 20px auto;
+                text-align: justify;
+                border: 2px solid #00BFFF;
+                padding: 14px 10px;
+                width: 200px;
+                outline: none;
+                color: white;
+                border-radius: 24px;
+                transform:0.25s;
+                cursor:wait ;      /*鼠标形状参数 */
+                text-indent: 10%;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .box input[type="text"]:focus,.box input[type="password"]:focus{
+                width: 280px;
+                border-color: #2ecc71;
+            }
+
+            .box input[type = "submit"]{
+                border: 0;
+                background: none;
+                display: block;
+                margin: 30px auto;
+                text-align: center;
+                border: 2px solid #2ECC71;
+                padding: 14px 40px;
+                /*width: 200px;*/
+                outline: none;
+                color: white;
+                border-radius: 24px;
+                transform: 0.25s;
+                cursor: pointer;
+                text-transform: uppercase;
+            }
+            .box input[type="submit"]:hover{
+                background: #2ECC71;
+            }
+        </style>
+	</head>
+	<body class="img_isi">
+
+	<form class="box" action="login_go.html" method="post">
+		<h1>Login</h1>
+		<input type="text" name="" placeholder="Username" maxlength="10"/>
+			<!--<span id="code_msg">请输入6-10位字母大小</span>-->
+		<input type="password" name="" placeholder="Password" maxlength="10"/>
+		<input type="submit" value="Login" onclick="check()">
+	</form>
+{#	<script src="./static/js/login_goin.js"></script>#}
+    <script type="text/javascript">
+     function check() {
+	    if(document.getElementById("username").value=="") {
+	        alert("没有输入用户名！");
+	         return false;
+	      } else if(document.getElementById("password").value=="") {
+	        alert("没有输入密码！");
+	        return false;
+	      } else {
+	        alert("提交成功！")
+	        return true;
+	       }
+	    }
+    </script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+{% macro mypage(pagination, endpoint) %}
+    <style type="text/css">
+    .page_a
+    {
+        text-decoration: none;
+    }
+    </style>
+    <ul>
+        <a {% if not pagination.has_prev %}class="disabled"{% endif %}>
+            <a class="page_a" href="{% if pagination.has_prev %}{{ url_for(endpoint,page = pagination.page - 1, **kwargs) }}
+            {% else %}#{% endif %}">&laquo;上一页
+            </a>
+        </a>
+        {% for p in pagination.iter_pages() %}
+            {% if p %}
+                {% if p == pagination.page %}
+                    <a class="active">
+                        <a class="page_a" href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+                    </a>
+                {% else %}
+                    <a>
+                        <a class="page_a" href="{{ url_for(endpoint, page = p, **kwargs) }}">{{ p }}</a>
+                    </a>
+                {% endif %}
+            {% else %}
+                <a class="disabled">
+                    <a class="page_a" href="#">&hellip;</a>
+                </a>
+            {% endif %}
+        {% endfor %}
+        <a {% if not pagination.has_next %} class="disabled"{% endif %}>
+            <a class="page_a" href="
+                    {% if pagination.has_next %}{{ url_for(endpoint,page = pagination.page + 1, **kwargs) }}{% else %}#{% endif %}">下一页
+                &raquo;
+            </a>
+        </a>
+        <p>每页{{ pagination.per_page }}条
+        共{{ pagination.pages }}页
+        共{{ pagination.total }}条</p>
+    </ul>
+{% endmacro %}
